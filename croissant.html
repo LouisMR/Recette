@@ -1,0 +1,36 @@
+<div class="recettes">
+    <h2>{{titre}}</h2>
+    <img :src="image">
+    <div class=info>
+        <p class="link"><a :href="source">Lien Original</a></p>
+        <p><strong>ID de la recette: </strong>{{id}}</p>
+        <p><strong>Préparation: </strong>{{temps_preparation}}m</p>
+        <p><strong>Cuisson: </strong>{{temps_cuisson}}m</p>
+        <p><strong>Attente: </strong>{{temps_attente}}m</p>
+        <p><strong>Total: </strong>{{total}}</p>
+        <p v-show="congele"><strong>{{secongele}}</strong></p>
+        <p class="etoile" v-for="n in etoiles"><img :src="etoile"></p><br>
+        <p><strong>Nombre de votes:</strong> {{voteRecette}}</p>
+        <button type="submit" @click="http_post()">J'aime cette recette</button>
+        <p><strong>Ingrédients</strong>
+            <ul>
+                <li v-for="ingredient in ingredients">{{ingredient.texte}}</li>
+            </ul>
+        </p>
+    </div>
+    <div class="preparation">
+        <h3>Étapes de préparation</h3>
+        <ol>
+            <li v-for="preparation in preparations">{{preparation}}</li>
+        </ol>
+    </div>
+
+    <div class="sectionCommentaire">
+        <h3>Commentaires des utilisateurs</h3>
+        <div class="commentaires" v-for="commentaire in commentaires">
+            <p><strong>{{commentaire.utilisateur}}</strong></p>
+            <p>{{commentaire.texte}}</p>
+        </div>
+    </div>
+</div>
+</div>
